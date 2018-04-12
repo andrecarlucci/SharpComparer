@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27520.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpComparer", "SharpComparer\SharpComparer.csproj", "{1F873BA3-51DC-40AD-9D82-11B5AADDD9BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpComparer.Tests", "SharpComparer.Tests\SharpComparer.Tests.csproj", "{A499E177-42CC-477D-B302-D57503BA2AC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1F873BA3-51DC-40AD-9D82-11B5AADDD9BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F873BA3-51DC-40AD-9D82-11B5AADDD9BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F873BA3-51DC-40AD-9D82-11B5AADDD9BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A499E177-42CC-477D-B302-D57503BA2AC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A499E177-42CC-477D-B302-D57503BA2AC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A499E177-42CC-477D-B302-D57503BA2AC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A499E177-42CC-477D-B302-D57503BA2AC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
