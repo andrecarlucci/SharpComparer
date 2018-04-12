@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Xunit;
 
 namespace SharpComparer.Tests {
@@ -26,9 +27,9 @@ namespace SharpComparer.Tests {
         public void Should_compare_null_on_left() {
             var left = new Foo { Name = null, Age = 1 };
             var right = new FooClone { Name = "n", Age = 1 };
-            var result = Comparator.With(left, right)
-                                      .Compare();
-            Assert.False(result.Success);
+            var result = Comparator.With(left, right).Compare();
+
+            Assert.False(result.Success, result.GetAllErrors());
             Assert.Equal(nameof(left.Name), result.Errors[0].Property);
             Assert.Equal(ErrorType.NotEqual, result.Errors[0].Error);
         }
@@ -124,6 +125,29 @@ namespace SharpComparer.Tests {
             Assert.True(result.Success, result.GetAllErrors());
         }
 
+        [Fact]
+        public void Should_replace() {
+            var l = new Moo { Names = new List<string>(), Age = 1 };
+            var r = new Moo { Names = new List<string>(), Age = 1 };
+            var result = Comparator.With(r, l)
+                                   .ReplaceLeft(nameof(l.Names), l.Names.Count)
+                                   .ReplaceRight(nameof(l.Names), r.Names.Count)
+                                   .Compare();
+
+            Assert.True(result.Success, result.GetAllErrors());
+        }
+
+        [Fact]
+        public void Should_use_sizes_to_compare_enumerables() {
+            var l = new Moo { Names = new List<string>(), Age = 1 };
+            var r = new Moo { Names = new List<string>(), Age = 1 };
+            var result = Comparator.With(r, l)
+                                   .UseSizeToCompareCollections()
+                                   .Compare();
+
+            Assert.True(result.Success, result.GetAllErrors());
+        }
+
         public class Foo {
             public string Name { get; set; }
             public int Age { get; set; }
@@ -138,6 +162,11 @@ namespace SharpComparer.Tests {
             public string Name { get; set; }
             public int Age { get; set; }
             public string Address { get; set; }
+        }
+
+        public class Moo {
+            public int Age { get; set; }
+            public List<string> Names { get; set; }
         }
     }
 }
